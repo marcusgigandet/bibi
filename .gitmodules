@@ -1,0 +1,3 @@
+[submodule "vendor/ra4m1_hal"]
+	path = vendor/ra4m1_hal
+	url = git@github.com:marcusgigandet/ra4m1_hal.git

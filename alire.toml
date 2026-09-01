@@ -1,0 +1,15 @@
+name = "bibi"
+description = ""
+version = "0.1.0-dev"
+
+authors = ["Marcus Gigandet"]
+maintainers = ["Marcus Gigandet <78104059+marcusgigandet@users.noreply.github.com>"]
+licenses = "LGPL-3.0-or-later"
+website = "https://github.com/marcusgigandet/bibi"
+tags = []
+
+[[depends-on]]
+ra4m1_hal = "*"
+
+[[pins]]
+ra4m1_hal = { path = "vendor/ra4m1_hal" }
