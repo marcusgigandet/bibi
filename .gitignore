@@ -1,4 +1,10 @@
+# Alire
 /obj/
 /bin/
 /alire/
 /config/
+
+# Editors
+
+## VSCode
+.vcpkg/

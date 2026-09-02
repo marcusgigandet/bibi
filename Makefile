@@ -2,9 +2,10 @@
 
 TARGET := R7FA4M1AB
 BINARY := bin/bibi
+BOARD ?= uno_r4_minima
 
 build:
-	@alr build
+	@BOARD=$(BOARD) alr build
 
 clean:
 	@alr clean

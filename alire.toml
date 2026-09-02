@@ -10,6 +10,11 @@ tags = []
 
 [[depends-on]]
 ra4m1_hal = "*"
+cortex_m = "^1"
+gnat_arm_elf = ">=16.1"
 
 [[pins]]
 ra4m1_hal = { path = "vendor/ra4m1_hal" }
+
+[configuration.values]
+cortex_m.core = "m0p"
