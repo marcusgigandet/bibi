@@ -1,7 +1,9 @@
 with R7FA4M1AB.PFS;
 with R7FA4M1AB.PMISC;
 
-package body Board is
+package body Board
+  with SPARK_Mode => On
+is
 
    procedure Initialize is
    begin
