@@ -1,7 +1,8 @@
 --  Executable entry point
 
 with Board;
-with HAL.UART;
+with HAL;
+with HAL.GPIO;
 with RA4M1_HAL.GPIO;
 with RA4M1_HAL.UART;
 
@@ -13,29 +14,25 @@ procedure Bibi with SPARK_Mode => On is
       Parity_Type  => RA4M1_HAL.UART.Parity_None,
       Loopback     => False,
       Enable_FIFOs => False);
-
-   Port : RA4M1_HAL.UART.UART_Port;
-
-   Data   : HAL.UART.UART_Data_8b (0 .. 0) := (0 => Character'Pos ('A'));
-   Status : HAL.UART.UART_Status;
-
 begin
    Board.Initialize;
 
-   RA4M1_HAL.GPIO.Digital_Write (Board.LED_Pin, True);
+   --- Configure Pin modes to output
+   Board.LED_Pin.Set_Mode (HAL.GPIO.Output);
+   Board.Left_Motor_Pin.Set_Mode (Hal.GPIO.Output);
+   Board.Right_Motor_Pin.Set_Mode (Hal.GPIO.Output);
 
-   RA4M1_HAL.UART.Configure (This => Port, Config => UART_Config);
+   -- Configure Pin modes to input
+   Board.Sensor_Center_Pin.Set_Mode (Hal.GPIO.Input);
 
-   RA4M1_HAL.UART.Transmit
-     (This => Port, Data => Data, Status => Status, Timeout => 1_000);
-
+   --- Basic LED blinking loop
    loop
       for J in 0 .. 1_000 loop
-         RA4M1_HAL.GPIO.Digital_Write (Board.LED_Pin, False);
+         Board.LED_Pin.Clear;
       end loop;
 
       for J in 0 .. 1_000 loop
-         RA4M1_HAL.GPIO.Digital_Write (Board.LED_Pin, True);
+         Board.LED_Pin.Set;
       end loop;
    end loop;
 
