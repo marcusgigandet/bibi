@@ -17,4 +17,4 @@ gnat_arm_elf = ">=16.1"
 ra4m1_hal = { path = "vendor/ra4m1_hal" }
 
 [configuration.values]
-cortex_m.core = "m0p"
+cortex_m.core = "m4"
