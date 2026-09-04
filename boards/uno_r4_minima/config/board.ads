@@ -1,3 +1,9 @@
+-- 
+-- Copyright (C) 2026 Marcus Gigandet
+--
+-- SPDX-License-Identifier: GPL-3.0-or-later
+-- 
+
 with RA4M1_HAL.GPIO;
 
 package Board

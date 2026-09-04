@@ -2,13 +2,14 @@
 fix = true
 default_year = "2026"
 author = "Marcus Gigandet"
-license = "lgpl"
+license = "gpl"
+exclude = ["^vendor/"]
 
-[licenses.lgpl]
+[licenses.gpl]
 text = """
 Copyright (C) {years} {author}
 
-SPDX-License-Identifier: LGPL-3.0-or-later
+SPDX-License-Identifier: GPL-3.0-or-later
 """
 
 [languages.asm]
