@@ -1,15 +1,15 @@
--- 
--- Copyright (C) 2026 Marcus Gigandet
 --
--- SPDX-License-Identifier: GPL-3.0-or-later
--- 
+--  Copyright (C) 2026 Marcus Gigandet
+--
+--  SPDX-License-Identifier: GPL-3.0-or-later
+--
 
 --  Executable entry point
 
 with Board;
-with HAL;
-with HAL.GPIO;
-with RA4M1_HAL.GPIO;
+with HAL.GPIO;       use HAL.GPIO;
+with RA4M1_HAL;      use RA4M1_HAL;
+with RA4M1_HAL.Time; use RA4M1_HAL.Time;
 with RA4M1_HAL.UART;
 
 procedure Bibi with SPARK_Mode => On is
@@ -20,26 +20,25 @@ procedure Bibi with SPARK_Mode => On is
       Parity_Type  => RA4M1_HAL.UART.Parity_None,
       Loopback     => False,
       Enable_FIFOs => False);
+
 begin
    Board.Initialize;
 
-   --- Configure Pin modes to output
-   Board.LED_Pin.Set_Mode (HAL.GPIO.Output);
-   Board.Left_Motor_Pin.Set_Mode (Hal.GPIO.Output);
-   Board.Right_Motor_Pin.Set_Mode (Hal.GPIO.Output);
+   --  Configure Pin modes to output
+   Board.LED_Pin.Set_Mode (Output);
+   Board.Left_Motor_Pin.Set_Mode (Output);
+   Board.Right_Motor_Pin.Set_Mode (Output);
 
-   -- Configure Pin modes to input
-   Board.Sensor_Center_Pin.Set_Mode (Hal.GPIO.Input);
+   --  Configure Pin modes to input
+   Board.Sensor_Center_Pin.Set_Mode (Input);
 
-   --- Basic LED blinking loop
+   --  Basic LED blinking loop
    loop
-      for J in 0 .. 1_000 loop
-         Board.LED_Pin.Clear;
-      end loop;
+      Delayer.Delay_Milliseconds (1_000);
+      Board.LED_Pin.Clear;
 
-      for J in 0 .. 1_000 loop
-         Board.LED_Pin.Set;
-      end loop;
+      Delayer.Delay_Milliseconds (1_000);
+      Board.LED_Pin.Set;
    end loop;
 
 end Bibi;

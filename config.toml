@@ -3,7 +3,7 @@ fix = true
 default_year = "2026"
 author = "Marcus Gigandet"
 license = "gpl"
-exclude = ["^vendor/"]
+exclude = ["^obj/", "^config/", "^vendor/"]
 
 [licenses.gpl]
 text = """
@@ -20,6 +20,6 @@ block_end = " */"
 
 [languages.ada]
 extensions = [".ads", ".adb", ".gpr"]
-block_start = "-- "
-line_prefix = "-- "
-block_end = "-- "
+block_start = "--"
+line_prefix = "--  "
+block_end = "--"
